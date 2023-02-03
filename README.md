@@ -7,7 +7,9 @@
 - 1、在数据库中建表 参考 `src/main/resources/META-INF/WORKER_NODE.sql`
 
 - 2、集成依赖（需先将该项目源码下载并打包）
+
 ```xml
+
 <dependency>
     <groupId>com.mogudiandian</groupId>
     <artifactId>unique-id-generator</artifactId>
@@ -16,20 +18,47 @@
 ```
 
 - 3、在启动类上引用注解 `@EnableUniqueIDGenerator`
+
 ```java
+
 @EnableUniqueIDGenerator
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class StartApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(StartApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(StartApplication.class, args);
+    }
 }
 ```
 
 - 4、加入配置[可选，如果是用spring-boot默认的数据源或数据源的beanName为dataSource则不需要这一步]
+
 ```properties
 unique.id.generator.datasource.name=WORKER_NODE表所在库的数据源名称
 ```
+
+- 5、代码中使用
+
+```java
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.mogudiandian.unique.id.generator.UniqueIDGenerator;
+
+@Service
+public class GeneratorService {
+
+    @Autowired
+    private UniqueIDGenerator uniqueIDGenerator;
+
+    public void generate() {
+        long id = uniqueIDGenerator.generate();
+        // do something...
+    }
+}
+```
+
+## 原理
+
+请参考原始仓库 [uid-generator中文文档](https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md)
 
 ## 使用前准备
 
@@ -63,6 +92,7 @@ unique.id.generator.datasource.name=WORKER_NODE表所在库的数据源名称
 `settings.xml`
 
 ```xml
+
 <servers>
     <server>
         <id>snapshots</id>
@@ -80,6 +110,7 @@ unique.id.generator.datasource.name=WORKER_NODE表所在库的数据源名称
 `pom.xml`
 
 ```xml
+
 <distributionManagement>
     <snapshotRepository>
         <id>snapshots</id>
@@ -91,5 +122,3 @@ unique.id.generator.datasource.name=WORKER_NODE表所在库的数据源名称
     </repository>
 </distributionManagement>
 ```
-## 原理
-请参考原始仓库 [uid-generator中文文档](https://github.com/baidu/uid-generator/blob/master/README.zh_cn.md)
