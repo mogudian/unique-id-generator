@@ -9,7 +9,6 @@
 - 2、集成依赖（需先将该项目源码下载并打包）
 
 ```xml
-
 <dependency>
     <groupId>com.mogudiandian</groupId>
     <artifactId>unique-id-generator</artifactId>
@@ -20,7 +19,6 @@
 - 3、在启动类上引用注解 `@EnableUniqueIDGenerator`
 
 ```java
-
 @EnableUniqueIDGenerator
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class StartApplication {
