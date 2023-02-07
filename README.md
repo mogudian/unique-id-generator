@@ -71,17 +71,6 @@ public class GeneratorService {
 
 `mvn clean install`
 
-## 引用项目
-
-```xml
-
-<dependency>
-    <groupId>com.mogudiandian</groupId>
-    <artifactId>joshua-aop</artifactId>
-    <version>LATEST</version>
-</dependency>
-```
-
 ## 发布项目
 
 修改 `pom.xml` 的 `distributionManagement` 节点，替换为自己在 `settings.xml` 中 配置的 `server` 节点，
