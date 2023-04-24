@@ -1,6 +1,6 @@
 # unique-id-generator
 
-封装百度的 [uid-generator](https://github.com/baidu/uid-generator) ，使其可以快速集成到 spring-boot 项目中
+将百度的 [uid-generator](https://github.com/baidu/uid-generator) 封装成 spring-boot-starter ，使其可以快速集成到 spring-boot 项目中
 
 ## 使用说明
 
